@@ -1,0 +1,6 @@
+me
+{
+        name <%= node[:fqdn] %>;
+        info "Network-Name";
+        numeric <%= node[:fqdn][-12] %>; #This pulls the node number
+};

@@ -1,0 +1,85 @@
+/*
+ * NEW: link {}
+ * OLD: C/N:Lines
+ * This defines an okay for a server connection.
+ * NOTE: BOTH SERVERS NEED A LINK {} SETTING TO CONNECT PROPERLY!
+ * Syntax is as follows:
+ * link (server name)
+ * {
+ *      username        (username, * works too);
+ *      hostname        (ip number/hostmask);
+ *      bind-ip         (What IP to bind to when connecting, or *);
+ *      port            (port to connect to, if any);
+ *      hub (If this is a hub, * works, or servermasks it may bring in);
+ *      [or leaf *;]
+ *      password-connect "(pass to send)";
+ *      password-receive "(pass we should receive)";
+ *      class           (class to direct servers into);
+ *      options {
+ *              (options here*);
+ *      };
+ *      // If we use SSL, we can choose what cipher to use in SSL mode
+ *      // Retrieve a list by "openssl ciphers", separate ciphers with :'s
+ *
+ *      ciphers "DES-CBC3-MD5";
+ *
+ * };
+*/
+
+/*
+        options:
+        OLD     |       NEW
+        S               ssl
+        Z               zip
+        N/A             autoconnect
+        N/A             quarantine
+        N/A             nodnscache
+*/
+
+link server002.domain.com {
+   username *;
+   hostname 00.00.0.0;
+   bind-ip *;
+   port 8097;
+   hub *;
+   password-connect "defaultpassword";
+   password-receive "defaultpassword";
+   class servers;
+  options {
+     autoconnect;
+     //ssl;
+   };
+};
+
+link server003.domain.com {
+   username *;
+   hostname 00.00.0.0;
+   bind-ip *;
+   port 8097;
+   hub *;
+   password-connect "defaultpassword";
+   password-receive "defaultpassword";   
+   class servers;
+   options {
+     autoconnect;
+     //ssl;
+   };
+};
+
+link            services001.domain.com
+{
+        username        *;
+        hostname        00.00.0.000;
+        bind-ip         *;
+        port            7029;
+        hub             *;
+        password-connect "defaultpassword";
+        password-receive "defaultpassword";
+        class           servers;
+                options {
+                        /* Note: You should not use autoconnect when linking services */
+                        //autoconnect;
+                        //ssl;
+                        //zip;
+                };
+};

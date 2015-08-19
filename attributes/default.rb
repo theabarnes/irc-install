@@ -1,0 +1,7 @@
+default[:unrealircd][:dir]      =       "/home/ec2-user/ircd"
+default[:unrealircd][:data_dir] =       "/home/ec2-user/ircd"
+default[:unrealircd][:log_dir]  =       "/home/ec2-user/ircd"
+default[:unrealircd][:user]     =       "ircd"
+default[:unrealircd][:port]     =       "6667"
+default[:unrealircd][:version]  =       "Unreal3.2.10.2"
+default[:unrealircd][:ip]       =       "{ip of server to download package from}"
